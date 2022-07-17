@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{{magazine.title}}</title>
+</head>
+<nav class="d-flex justify-content-around text-bg-dark text-white pt-2">
+    <h1>{{magazine.title}}!</h1>
+    <div class="d-flex justify-content-between gap-4 mt-1">
+        <a href='/magazines/create'>
+            <button class="btn btn-success">Add Magazine</button>
+        </a>
+        <a href='/users/{{session.user_id}}/edit'>
+            <button class="btn btn-warning">Account</button>
+        </a>
+        <a href='/users/logout'>
+            <button class="btn btn-danger">Logout</button>
+        </a>
+    </div>
+</nav>
+<body>
+
+    <div class="d-flex justify-content-center mt-4 ">
+        <h2>Added by: {{magazine.creator.first_name}}</h2>
+    </div>
+    <div class="mx-auto w-75 p-4 text-bg-dark rounded">
+        <div class="mx-auto w-75">
+            <div class="d-flex justify-content-center gap-4">
+                <h3 class="text-warning">Description:</h3>
+                    <div>
+                        <h3 class = "ms-3">{{magazine.description}}</h3>
+                    </div>
+            </div>    
+            <div class="d-flex justify-content-center gap-4">
+                <h3 class="text-warning">Subscribers:</h3>
+                {% for user_who_subscribed in magazine.users_who_subscribed %}
+                    <div>
+                        <h3>- {{user_who_subscribed.first_name}} {{user_who_subscribed.last_name}}</h3>
+                    </div>
+                {% endfor %}
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
