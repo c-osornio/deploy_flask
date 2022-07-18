@@ -30,11 +30,13 @@
         {% for magazine in all_magazines %}
             <div class="mx-auto mt-3 w-100 text-bg-dark p-3 rounded d-flex justify-content-center gap-5">
                 <h3><a href="/magazines/{{magazine.id}}">{{magazine.title}}</a> added by {{magazine.creator.first_name}} {{magazine.creator.last_name}}</h3>
-                <form action="/magazines/{{magazine.id}}/subscribe" method="POST">
-                    <input type="hidden" name="id" value="{{magazine.id}}">
-                    <input type="hidden" name="user_id" value="{{session.user_id}}">
-                    <button type="submit" class="btn btn-success">Subscribe</button>
-                </form>
+                {% if session.user_id not in magazine.user_ids_who_subscribed %}
+                    <form action="/magazines/{{magazine.id}}/subscribe" method="POST">
+                        <input type="hidden" name="id" value="{{magazine.id}}">
+                        <input type="hidden" name="user_id" value="{{session.user_id}}">
+                        <button type="submit" class="btn btn-success">Subscribe</button>
+                    </form>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
