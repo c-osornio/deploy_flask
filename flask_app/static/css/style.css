@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Shadows+Into+Light&display=swap');
+
 * {
     margin: 0px;
     padding: 0;
+}
+
+.title {
+    font-family: 'Cinzel', serif;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+.background {
+    background-image: url(https://thumbs.dreamstime.com/b/magazine-clipping-background-8914883.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }

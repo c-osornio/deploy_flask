@@ -10,7 +10,7 @@
     <title>Create New Recipe</title>
 </head>
 <nav class="d-flex justify-content-around text-bg-dark text-white pt-2">
-    <h1>Add a Magazine!</h1>
+    <h1 class="title">Add a Magazine!</h1>
     <div class="d-flex justify-content-between gap-4 mt-1">
         <a href='/users/profile/{{session.user_id}}'>
             <button class="btn btn-success">Dashboard</button>
@@ -20,7 +20,7 @@
         </a>
     </div>
 </nav>
-<body>
+<body class="background">
 
     <div class="text-center mt-3">
         {% with messages = get_flashed_messages(category_filter = ['magazine']) %}

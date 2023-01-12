@@ -10,39 +10,41 @@
     <title>{{magazine.title}}</title>
 </head>
 <nav class="d-flex justify-content-around text-bg-dark text-white pt-2">
-    <h1>{{magazine.title}}!</h1>
+    <h1 class="title">{{magazine.title}}! <span class="text-primary">Added by {{magazine.creator.first_name}}</span></h1>
     <div class="d-flex justify-content-between gap-4 mt-1">
         <a href='/magazines/create'>
             <button class="btn btn-success">Add Magazine</button>
         </a>
-        <a href='/users/{{session.user_id}}/edit'>
-            <button class="btn btn-warning">Account</button>
+        <a href='/users/profile/{{session.user_id}}'>
+            <button class="btn btn-success">Dashboard</button>
         </a>
         <a href='/users/logout'>
             <button class="btn btn-danger">Logout</button>
         </a>
     </div>
 </nav>
-<body>
+<body class="background">
 
-    <div class="d-flex justify-content-center mt-4 ">
+    <!-- <div class="d-flex justify-content-center mt-4 ">
         <h2>Added by: {{magazine.creator.first_name}}</h2>
-    </div>
-    <div class="mx-auto w-75 p-4 text-bg-dark rounded">
+    </div> -->
+    <div class="mt-5 mx-auto w-75 p-4 text-bg-dark rounded">
         <div class="mx-auto w-75">
-            <div class="d-flex justify-content-center gap-4">
-                <h3 class="text-warning">Description:</h3>
-                    <div>
-                        <h3 class = "ms-3">{{magazine.description}}</h3>
-                    </div>
+            <div class="d-flex justify-content-center gap-4 text-center">
+                <div>
+                    <h3 class="text-warning">--- Description ---</h3>
+                        <div>
+                            <h3 class = "ms-3">{{magazine.description}}</h3>
+                        </div>
+                </div>
             </div>    
-            <div class="d-flex justify-content-center gap-4">
-                <h3 class="text-warning">Subscribers:</h3>
-                {% for user_who_subscribed in magazine.users_who_subscribed %}
+            <div class="d-flex justify-content-center gap-4 text-center">
                     <div>
-                        <h3>- {{user_who_subscribed.first_name}} {{user_who_subscribed.last_name}}</h3>
+                    <h3 class="text-warning mt-5">--- Subscribers ---</h3>
+                        {% for user_who_subscribed in magazine.users_who_subscribed %}
+                            <h3>{{user_who_subscribed.first_name}} {{user_who_subscribed.last_name}}</h3>
+                        {% endfor %}
                     </div>
-                {% endfor %}
             </div> 
         </div>
     </div>
