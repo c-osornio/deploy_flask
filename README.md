@@ -1,1 +1,1 @@
-# PetLover - Python/Flask web app
+# House Hunter - Python/Flask web app
